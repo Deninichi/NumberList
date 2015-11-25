@@ -2,13 +2,19 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
- * Created by Пользователь on 25.11.2015.
+ * Created by Denis Nichik on 25.11.2015.
  */
 public class ConvertNumber
 {
     public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("G:\\1.txt"));
+
+
+        BufferedReader readerstream = new BufferedReader(new InputStreamReader(System.in));
+        String inputFile = readerstream.readLine();
+
+        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
         BufferedWriter writer = new BufferedWriter(new FileWriter("G:\\2.txt"));
         String line;
         List<String> numbers = new ArrayList<String>();
