@@ -8,7 +8,6 @@ import java.io.IOException;
 public class OutFile {
 
     public OutFile() throws IOException {
-        System.out.println(ConvertNumber.getInFile());
         BufferedWriter writer = new BufferedWriter(new FileWriter(ConvertNumber.getInFile().substring(0, ConvertNumber.getInFile().length()-4) + "_Ready.txt"));
 
         for (int i = 0; i < ConvertNumber.getResult().size(); i++) {
@@ -22,7 +21,7 @@ public class OutFile {
         }
         System.out.println("Было добавлено: " + ConvertNumber.getResult().size() + " номеров.");
         System.out.println("С ошибками: " + ConvertNumber.getError().size() + " номеров");
-
+        System.out.println("Сохранено в файле: " + ConvertNumber.getInFile().substring(0, ConvertNumber.getInFile().length()-4) + "_Ready.txt");
         writer.close();
 
     }
