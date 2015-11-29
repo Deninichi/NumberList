@@ -1,4 +1,4 @@
-import java.io.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +13,7 @@ public class ConvertNumber {
     public static void main(String[] args) throws IOException {
 
         InputFile inputfile = new InputFile();
+        inputfile.readFile();
 
         result = new ArrayList<String>();
         error = new ArrayList<String>();
@@ -42,7 +43,9 @@ public class ConvertNumber {
                 error.add(inputfile.getNumbers().get(i));
         }
         OutFile outFile = new OutFile(inputfile.getInFile());
+        outFile.writeFile();
     }
+
     public static List<String> getResult() {
         return result;
     }

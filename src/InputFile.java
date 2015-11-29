@@ -54,8 +54,11 @@ public class InputFile extends JFrame {
 
 
         BufferedReader readerstream = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Укажите файл с телефонными номерами:");
         InFile = readerstream.readLine();
+    }
 
+    public void readFile() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(InFile));
         String line;
         numbers = new ArrayList<String>();

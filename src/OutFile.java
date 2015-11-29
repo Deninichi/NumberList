@@ -6,12 +6,17 @@ import java.io.IOException;
  * Created by Пользователь on 28.11.2015.
  */
 public class OutFile {
-
+        private BufferedWriter writer;
+        private String inFile;
 
     public OutFile(String inFile) throws IOException {
-        System.out.println(inFile);
-        BufferedWriter writer = new BufferedWriter(new FileWriter(inFile.substring(0, inFile.length()-4) + "_Ready.txt"));
+        this.inFile = inFile;
+        writer = new BufferedWriter(new FileWriter(inFile.substring(0, inFile.length()-4) + "_Ready.txt"));
 
+
+    }
+
+    public void writeFile() throws IOException {
         for (int i = 0; i < ConvertNumber.getResult().size(); i++) {
             writer.write(ConvertNumber.getResult().get(i) + "\n");
 
@@ -25,6 +30,5 @@ public class OutFile {
         System.out.println("С ошибками: " + ConvertNumber.getError().size() + " номеров");
         System.out.println("Сохранено в файле: " + inFile.substring(0, inFile.length()-4) + "_Ready.txt");
         writer.close();
-
     }
 }
