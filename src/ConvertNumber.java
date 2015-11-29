@@ -9,12 +9,10 @@ import java.util.List;
 public class ConvertNumber {
     private static List<String> result;
     private static List<String> error;
-    private static String InFile;
 
     public static void main(String[] args) throws IOException {
 
         InputFile inputfile = new InputFile();
-        InFile = inputfile.getInFile();
 
         result = new ArrayList<String>();
         error = new ArrayList<String>();
@@ -43,7 +41,7 @@ public class ConvertNumber {
             } else
                 error.add(inputfile.getNumbers().get(i));
         }
-        OutFile outFile = new OutFile();
+        OutFile outFile = new OutFile(inputfile.getInFile());
     }
     public static List<String> getResult() {
         return result;
@@ -51,9 +49,5 @@ public class ConvertNumber {
 
     public static List<String> getError() {
         return error;
-    }
-
-    public static String getInFile() {
-        return InFile;
     }
 }
