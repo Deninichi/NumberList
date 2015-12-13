@@ -1,4 +1,6 @@
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,16 +9,18 @@ import java.util.List;
  * Created by Denis Nichik on 25.11.2015.
  */
 public class ConvertNumber {
-    private static List<String> result;
-    private static List<String> error;
 
     public static void main(String[] args) throws IOException {
 
-        InputFile inputfile = new InputFile();
-        inputfile.readFile();
+        BufferedReader readerstream = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Укажите файл с телефонными номерами:");
+        String InFile = readerstream.readLine();
 
-        result = new ArrayList<String>();
-        error = new ArrayList<String>();
+        InputFile inputfile = new InputFile();
+        inputfile.readFile(InFile);
+
+        List<String> result = new ArrayList<String>();
+        List<String> error = new ArrayList<String>();
         for (int i = 0; i < inputfile.getNumbers().size(); i++) {
 
 //            Проверка на налицие дефисов в номере и их удаление
@@ -42,15 +46,7 @@ public class ConvertNumber {
             } else
                 error.add(inputfile.getNumbers().get(i));
         }
-        OutFile outFile = new OutFile(inputfile.getInFile());
-        outFile.writeFile();
-    }
-
-    public static List<String> getResult() {
-        return result;
-    }
-
-    public static List<String> getError() {
-        return error;
+        OutFile outFile = new OutFile();
+        outFile.writeFile(InFile, result, error);
     }
 }
