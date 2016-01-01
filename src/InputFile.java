@@ -15,8 +15,8 @@ public class InputFile {
         BufferedReader reader = new BufferedReader(new FileReader(InFile));
         String line;
         numbers = new ArrayList<String>();
-        while ((line = reader.readLine()) != null){
-            numbers.add(line);
+        while ((line = reader.readLine()) != null) {
+                numbers.add(line);
         }
         reader.close();
     }

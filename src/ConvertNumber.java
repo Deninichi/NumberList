@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -14,11 +15,19 @@ public class ConvertNumber {
 
         BufferedReader readerstream = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Укажите файл с телефонными номерами:");
-        String InFile = readerstream.readLine();
+        String InFile;
 
         InputFile inputfile = new InputFile();
-        inputfile.readFile(InFile);
 
+        while (true) {
+            try {
+                InFile = readerstream.readLine();
+                inputfile.readFile(InFile);
+                break;
+            } catch (FileNotFoundException e) {
+                System.out.println("Файл не найден! Проверьте путь к файлу и введите его еще раз!");
+            }
+        }
         List<String> result = new ArrayList<String>();
         List<String> error = new ArrayList<String>();
         for (int i = 0; i < inputfile.getNumbers().size(); i++) {
